@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Array Box</title>
+    <style>
+        tr,
+        td,
+        table {
+            border: 2.5px solid rgb(68, 1, 1);
+            border-collapse: collapse;
+            padding: 10px
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <table>
+        <tr>
+            <td id="11"></td>
+            <td id="12">4</td>
+            <td id="13">7</td>
+            <td><button onclick="sortBaris1()">sort</button></td>
+        </tr>
+        <tr>
+            <td id="21">2</td>
+            <td id="22">5</td>
+            <td id="23">8</td>
+            <td><button onclick="sortBaris2()">sort</button></td>
+        </tr>
+        <tr>
+            <td id="31">3</td>
+            <td id="32">6</td>
+            <td id="33">9</td>
+            <td><button onclick="sortBaris3()">sort</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="sortKolom1()">sort</button></td>
+            <td><button onclick="sortKolom2()">sort</button></td>
+            <td><button onclick="sortKolom3()">sort</button></td>
+        </tr>
+    </table>
+    <br><br>
+    <input id="Putare" type="number" placeholder="Masukkan Angka" style="text-align: center;">
+    <br><br>
+    <button onclick="putarKirie()">Kiri</button>
+    <button onclick="putarKanane()">Kanan</button>
+</center>
+</body>
+    <script>
+        ArrayAngka = [[23,67,12],[6,3,98],[43,44,21]]
+        ArSementara = []
+        document.getElementById('11').innerHTML=ArrayAngka[0][0]
+        document.getElementById('12').innerHTML=ArrayAngka[1][0]
+        document.getElementById('13').innerHTML=ArrayAngka[2][0]
+
+        document.getElementById('21').innerHTML=ArrayAngka[0][1]
+        document.getElementById('22').innerHTML=ArrayAngka[1][1]
+        document.getElementById('23').innerHTML=ArrayAngka[2][1]
+
+        document.getElementById('31').innerHTML=ArrayAngka[0][2]
+        document.getElementById('32').innerHTML=ArrayAngka[1][2]
+        document.getElementById('33').innerHTML=ArrayAngka[2][2]
+    
+        sortKolom1 =()=>{
+            ArrayAngka[0].sort(function(x,y){  
+                return (x - y)
+            }) 
+            document.getElementById('11').innerHTML=ArrayAngka[0][0]
+            document.getElementById('21').innerHTML=ArrayAngka[0][1]
+            document.getElementById('31').innerHTML=ArrayAngka[0][2]
+        }
+        
+        sortKolom2 =()=>{
+            ArrayAngka[1].sort(function(x,y){  
+                return (x - y)
+            })
+            document.getElementById('12').innerHTML=ArrayAngka[1][0]
+            document.getElementById('22').innerHTML=ArrayAngka[1][1]
+            document.getElementById('32').innerHTML=ArrayAngka[1][2]
+        }
+
+        sortKolom3 =()=>{
+            ArrayAngka[2].sort(function(x,y){  
+                return (x - y)
+            })
+            document.getElementById('13').innerHTML=ArrayAngka[2][0]
+            document.getElementById('23').innerHTML=ArrayAngka[2][1]
+            document.getElementById('33').innerHTML=ArrayAngka[2][2]
+        }
+
+        sortBaris1 =()=>{
+            ArSementara = [ArrayAngka[0][0],ArrayAngka[1][0],ArrayAngka[2][0]]
+            ArSementara.sort(function(x,y){  
+                return (x - y)
+            })
+            document.getElementById('11').innerHTML=ArSementara[0]
+            document.getElementById('12').innerHTML=ArSementara[1]
+            document.getElementById('13').innerHTML=ArSementara[2]
+        }
+
+        sortBaris2 =()=>{
+            ArSementara = [ArrayAngka[0][1],ArrayAngka[1][1],ArrayAngka[2][1]]
+            ArSementara.sort(function(x,y){  
+                return (x - y)
+            })
+            document.getElementById('21').innerHTML=ArSementara[0]
+            document.getElementById('22').innerHTML=ArSementara[1]
+            document.getElementById('23').innerHTML=ArSementara[2]
+        }
+
+        sortBaris3 =()=>{
+            ArSementara = [ArrayAngka[0][2],ArrayAngka[1][2],ArrayAngka[2][2]]
+            ArSementara.sort(function(x,y){  
+                return (x - y)
+            })
+            document.getElementById('31').innerHTML=ArSementara[0]
+            document.getElementById('32').innerHTML=ArSementara[1]
+            document.getElementById('33').innerHTML=ArSementara[2]
+        }
+
+        putarKanane =()=>{
+            angkaPutar = parseInt(document.getElementById('Putare').value)
+            // console.log(angkaPutar)
+
+            temp = []
+            if(angkaPutar%2==0){
+                temp = [ArrayAngka[0][0],ArrayAngka[0][1],ArrayAngka[0][2]]
+                ArrayAngka[0]=ArrayAngka[1]
+                ArrayAngka[1]=ArrayAngka[2]
+                ArrayAngka[2]=temp
+            }
+            else if(angkaPutar%2!==0){
+                temp = [ArrayAngka[0][0],ArrayAngka[0][1],ArrayAngka[0][2]]
+                ArrayAngka[0]=ArrayAngka[2]
+                ArrayAngka[2]=ArrayAngka[1]
+                ArrayAngka[1]=temp
+            }
+                document.getElementById('11').innerHTML=ArrayAngka[0][0]
+                document.getElementById('12').innerHTML=ArrayAngka[1][0]
+                document.getElementById('13').innerHTML=ArrayAngka[2][0]
+
+                document.getElementById('21').innerHTML=ArrayAngka[0][1]
+                document.getElementById('22').innerHTML=ArrayAngka[1][1]
+                document.getElementById('23').innerHTML=ArrayAngka[2][1]
+
+                document.getElementById('31').innerHTML=ArrayAngka[0][2]
+                document.getElementById('32').innerHTML=ArrayAngka[1][2]
+                document.getElementById('33').innerHTML=ArrayAngka[2][2]
+        }
+
+        putarKirie =()=>{
+            angkaPutar = parseInt(document.getElementById('Putare').value)
+
+            temp = []
+            if(angkaPutar%2==0){
+                temp = [ArrayAngka[0][0],ArrayAngka[0][1],ArrayAngka[0][2]]
+                ArrayAngka[0]=ArrayAngka[2]
+                ArrayAngka[2]=ArrayAngka[1]
+                ArrayAngka[1]=temp
+            }
+            else if(angkaPutar%2!==0){
+                temp = [ArrayAngka[0][0],ArrayAngka[0][1],ArrayAngka[0][2]]
+                ArrayAngka[0]=ArrayAngka[1]
+                ArrayAngka[1]=ArrayAngka[2]
+                ArrayAngka[2]=temp
+            }
+                document.getElementById('11').innerHTML=ArrayAngka[0][0]
+                document.getElementById('12').innerHTML=ArrayAngka[1][0]
+                document.getElementById('13').innerHTML=ArrayAngka[2][0]
+
+                document.getElementById('21').innerHTML=ArrayAngka[0][1]
+                document.getElementById('22').innerHTML=ArrayAngka[1][1]
+                document.getElementById('23').innerHTML=ArrayAngka[2][1]
+
+                document.getElementById('31').innerHTML=ArrayAngka[0][2]
+                document.getElementById('32').innerHTML=ArrayAngka[1][2]
+                document.getElementById('33').innerHTML=ArrayAngka[2][2]
+        }
+
+    </script>
+
+
+</html>
